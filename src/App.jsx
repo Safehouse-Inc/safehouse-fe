@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { DDAASHomePage } from "./components";
+import { DDAASHomePage } from "./components/pages/DDAASHomePage";
 
 const router = createBrowserRouter([
   {
