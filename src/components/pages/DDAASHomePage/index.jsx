@@ -1,5 +1,12 @@
 import React from "react";
+import styled from "styled-components";
+
+const NavBar = styled.nav``;
 
 export const DDAASHomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <NavBar>topnav</NavBar>
+    </div>
+  );
 };
