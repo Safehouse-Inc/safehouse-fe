@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import headerBg from "../../../assets/images/header_bg.png";
 import serviceImg from "../../../assets/images/service_side_bg.png";
+import footerLogo from "../../../assets/svgs/logo-dark.svg";
 import getStartedImg from "../../../assets/images/get_started_bg.png";
 import { Flex, Section } from "../../atoms/Flex";
 import { Button } from "../../atoms/Button";
@@ -41,6 +42,16 @@ const GetStartedSection = styled(Flex)`
   height: 50vh;
   align-items: center;
   padding: 100px;
+`;
+
+const FooterLogo = styled.img`
+  width: 150px;
+`;
+
+const SocialIcons = styled(Flex)`
+  & span:not(:last-child) {
+    margin-right: 16px;
+  }
 `;
 
 export const DDAASHomePage = () => {
@@ -111,10 +122,10 @@ export const DDAASHomePage = () => {
 
       <GetStartedSection>
         <Section>
-          <Text type="h1" width="50%" margin="0 0 16px 0">
+          <Text type="h1" width="50%" margin="0 0 16px 0" color="#ffffff">
             Let’s get you Started
           </Text>
-          <Text type="p" width="70%" margin="0 0 16px 0">
+          <Text type="p" width="70%" margin="0 0 16px 0" color="#ffffff">
             Click on the get started button and fill the from to uptake the
             service
           </Text>
@@ -126,6 +137,54 @@ export const DDAASHomePage = () => {
           />
         </Section>
       </GetStartedSection>
+
+      <Flex
+        bgColor="#ffffff"
+        height="50vh"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Flex
+          direction="column"
+          width="80%"
+          height="70%"
+          alignItems="center"
+          justifyContent="center"
+          bgColor="#62e000"
+          borderRadius="16px"
+        >
+          <Text type="h1" margin="0 0 16px 0" color="#ffffff">
+            Need more information
+          </Text>
+          <Text
+            type="p"
+            width="40%"
+            color="#ffffff"
+            margin="0 0 16px 0"
+            textAlign="center"
+          >
+            Let us know what you need to have a successful transaction with ease
+            and peace of mind.
+          </Text>
+          <Button
+            text="Read more"
+            borderColor="#ffffff"
+            bgColor="#ffffff"
+            padding="18px 42px"
+            color="black"
+            fontWeight="600"
+          />
+        </Flex>
+      </Flex>
+
+      <Flex justifyContent="space-between" bgColor="white" padding="30px">
+        <FooterLogo src={footerLogo} alt="footer logo" />
+        <SocialIcons color="black">
+          <Text>Instagram</Text>
+          <Text>Youtube</Text>
+          <Text>Facebook</Text>
+        </SocialIcons>
+      </Flex>
     </>
   );
 };

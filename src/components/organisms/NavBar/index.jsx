@@ -45,7 +45,11 @@ export const NavBar = () => {
         {navItems.map((item, idx) => {
           if (item.type === "button")
             return <Button key={idx} text={item.name} borderColor="#62e000" />;
-          return <Text key={idx}>{item.name}</Text>;
+          return (
+            <Text color="#ffffff" key={idx}>
+              {item.name}
+            </Text>
+          );
         })}
       </NavItems>
     </Wrapper>

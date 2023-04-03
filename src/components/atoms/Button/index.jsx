@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
+  width: ${(props) => props.width};
+  margin: ${(props) => props.margin};
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.color};
   background-color: ${(props) => (props.bgColor ? props.bgColor : "#62e000")};

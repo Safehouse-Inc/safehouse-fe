@@ -5,6 +5,8 @@ const styles = css`
   width: ${(props) => props.width};
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin};
+  background-color: ${(props) => props.bgColor};
+  border-radius: ${(props) => props.borderRadius};
 `;
 
 export const Section = styled.div`
