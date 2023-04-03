@@ -18,6 +18,7 @@ export const Flex = styled.div`
   justify-content: ${(props) => props.justifyContent};
   align-items: ${(props) => props.alignItems};
   flex-direction: ${(props) => props.direction};
+  gap: ${(props) => props.gap};
 
   ${styles}
 `;

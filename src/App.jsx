@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { DDAASHomePage } from "./components/pages/DDAASHomePage";
 import { DDAASRequestSummaryPage } from "./components/pages/DDAASRequestSummaryPage.jsx";
 import { DDAASSentPage } from "./components/pages/DDAASSentPage";
+import { DDAASRequestForm } from "./components/pages/DDAASRequestForm";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/reference_code",
     element: <DDAASSentPage />,
+  },
+  {
+    path: "/request_form",
+    element: <DDAASRequestForm />,
   },
 ]);
 
