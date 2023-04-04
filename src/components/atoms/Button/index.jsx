@@ -15,5 +15,9 @@ const StyledButton = styled.button`
 `;
 
 export const Button = (props) => {
-  return <StyledButton {...props}>{props.text}</StyledButton>;
+  return (
+    <StyledButton type={props.type} {...props}>
+      {props.text}
+    </StyledButton>
+  );
 };

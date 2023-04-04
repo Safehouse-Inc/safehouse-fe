@@ -17,6 +17,6 @@ const StyledInput = styled.input`
   }
 `;
 
-export const Input = ({ type = "text", placeholder }) => {
-  return <StyledInput type={type} placeholder={placeholder} />;
+export const Input = (props) => {
+  return <StyledInput {...props} />;
 };
