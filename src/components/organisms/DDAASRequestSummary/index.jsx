@@ -5,6 +5,9 @@ import congratsIcon from "../../../assets/svgs/congrats_icon.svg";
 import { Button } from "../../atoms/Button";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import { useNavigate } from "react-router-dom";
 
 const Receipt = styled.div`
   border: 1px solid #e4e4e4;
@@ -23,7 +26,28 @@ const CongratsIcon = styled.img`
 `;
 
 export const DDAASRequestSummary = () => {
+  const navigate = useNavigate();
   const formValues = JSON.parse(localStorage.getItem("ddaas_request_data"));
+
+  const config = {
+    public_key: "FLWPUBK_TEST-bd5d2a07a8065f1a5b23e3fc490b6db1-X",
+    tx_ref: `safehouse-${uuidv4()}`,
+    amount: 3000,
+    currency: "NGN",
+    payment_options: "card, mobilemoney, ussd",
+    customer: {
+      email: formValues["Email Address"],
+      phone_number: formValues["Phone Number"],
+      name: `${formValues["First Name"]} ${formValues["Last Name"]}`,
+    },
+    customizations: {
+      title: "Safehouse DDAAS Request",
+      description: "Service charge for Due Diligence on property",
+      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
 
   const submitData = async () => {
     var formData = new FormData();
@@ -81,7 +105,19 @@ export const DDAASRequestSummary = () => {
         </ItemRow>
         {/* <Link to="/reference_code"> */}
         <Button
-          onClick={submitData}
+          onClick={() => {
+            handleFlutterPayment({
+              callback: async (response) => {
+                console.log(response);
+                if (response.status === "successful") {
+                  await submitData();
+                  navigate("/reference_code");
+                }
+                closePaymentModal(); // this will close the modal programmatically
+              },
+              onClose: () => {},
+            });
+          }}
           color="white"
           text="Make payment"
           borderColor="#62E000"

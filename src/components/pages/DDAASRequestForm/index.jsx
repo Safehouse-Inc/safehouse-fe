@@ -38,18 +38,18 @@ export const DDAASRequestForm = () => {
     validationSchema: Yup.object({
       "First Name": Yup.string()
         .max(15, "Must be 15 characters or less")
-        .required("Required"),
+        .required("This field is required"),
       "Last Name": Yup.string()
         .max(20, "Must be 20 characters or less")
-        .required("Required"),
+        .required("This field is required"),
       "Email Address": Yup.string()
         .email("Invalid email address")
-        .required("Required"),
-      "Phone Number": Yup.string().required("Required"),
-      "Property Owner Name": Yup.string().required("Required"),
-      "Property Address": Yup.string().required("Required"),
-      "Available Title": Yup.string().required("Required"),
-      "Survey Number": Yup.string().required("Required"),
+        .required("This field is required"),
+      "Phone Number": Yup.string().required("This field is required"),
+      "Property Owner Name": Yup.string().required("This field is required"),
+      "Property Address": Yup.string().required("This field is required"),
+      "Available Title": Yup.string().required("This field is required"),
+      "Survey Number": Yup.string().required("This field is required"),
     }),
     onSubmit: (values) => submit(values),
   });

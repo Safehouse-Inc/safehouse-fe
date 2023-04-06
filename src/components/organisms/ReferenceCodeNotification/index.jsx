@@ -16,11 +16,12 @@ export const ReferenceCodeNotification = () => {
     <Flex direction="column" alignItems="center" padding="60px 0">
       <StyledIcon src={checkMark} alt="checked" />
       <Text type="h1" margin="0 0 16px 0">
-        Reference Code Sent
+        Payment successful!
       </Text>
       <Text type="p" margin="0 0 16px 0" width="50%" textAlign="center">
-        You have a request confirmation email. Kindly click on the link therein
-        to proceed with your request
+        We'll start the process immediately. Please note that you have a receipt
+        from our payment partner. Kindly keep the reference code handy for
+        further conversations with us.
       </Text>
       <Link to="/">
         <Button
