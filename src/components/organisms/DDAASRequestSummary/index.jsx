@@ -4,7 +4,6 @@ import { Flex, Section } from "../../atoms/Flex";
 import congratsIcon from "../../../assets/svgs/congrats_icon.svg";
 import { Button } from "../../atoms/Button";
 import styled from "styled-components";
-import { Link, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Receipt = styled.div`
@@ -24,8 +23,7 @@ const CongratsIcon = styled.img`
 `;
 
 export const DDAASRequestSummary = () => {
-  const [searchParams] = useSearchParams();
-  const formValues = JSON.parse(searchParams.get("data"));
+  const formValues = JSON.parse(localStorage.getItem("ddaas_request_data"));
 
   const submitData = async () => {
     var formData = new FormData();
@@ -44,6 +42,10 @@ export const DDAASRequestSummary = () => {
     toast.error("Failed to submit form due to an error");
   };
 
+  if (!formValues) {
+    return <Text>Nothing to show here</Text>;
+  }
+
   return (
     <Receipt>
       <CongratsIcon src={congratsIcon} alt="success" />
@@ -53,29 +55,29 @@ export const DDAASRequestSummary = () => {
       <Section>
         <ItemRow justifyContent="space-between">
           <Text>Full name</Text>
-          <Text>Austin Asoluka</Text>
+          <Text>{`${formValues["First Name"]} ${formValues["Last Name"]}`}</Text>
         </ItemRow>
         <ItemRow justifyContent="space-between">
           <Text>Email</Text>
-          <Text>stracool9@gmail.com</Text>
+          <Text>{`${formValues["Email Address"]}`}</Text>
         </ItemRow>
         <ItemRow justifyContent="space-between">
           <Text>Property Owners name</Text>
-          <Text>John Chris</Text>
+          <Text>{`${formValues["Property Owner Name"]}`}</Text>
         </ItemRow>
         <ItemRow justifyContent="space-between">
           <Text>Property Address</Text>
-          <Text>Yaba, Lagos.</Text>
+          <Text>{`${formValues["Property Address"]}`}</Text>
         </ItemRow>
         <ItemRow justifyContent="space-between">
           <Text>Fee</Text>
-          <Text>300</Text>
+          <Text>50,000</Text>
         </ItemRow>
         <ItemRow justifyContent="space-between">
           <Text type="p" fontWeight="600">
             Total
           </Text>
-          <Text color="#62E000">300</Text>
+          <Text color="#62E000">50,000</Text>
         </ItemRow>
         {/* <Link to="/reference_code"> */}
         <Button

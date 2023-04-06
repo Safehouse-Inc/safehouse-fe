@@ -7,7 +7,6 @@ import homeIcon from "../../../assets/svgs/home_icon.svg";
 import profileIcon from "../../../assets/svgs/profile_icon.svg";
 import styled from "styled-components";
 import { Button } from "../../atoms/Button";
-import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -21,21 +20,8 @@ export const DDAASRequestForm = () => {
   const navigate = useNavigate();
 
   async function submit(values) {
-    navigate(`/summary?data=${JSON.stringify(values)}`);
-    // var formData = new FormData();
-    // for (var key in values) {
-    //   formData.append(key, values[key]);
-    // }
-
-    // const response = await fetch(
-    //   "https://script.google.com/macros/s/AKfycbwOq8q4af6_dHkF896ztDL7xqjCwV63jPXTqv3bG8RwAI8Z1xXRDf-t7WUoV7cfJKpG/exec",
-    //   {
-    //     method: "POST",
-    //     body: formData,
-    //   }
-    // );
-    // if (response.status === 200) return toast.success("Request successful");
-    // toast.error("Failed to submit form due to an error");
+    await localStorage.setItem("ddaas_request_data", JSON.stringify(values));
+    navigate("/summary");
   }
 
   const formik = useFormik({
