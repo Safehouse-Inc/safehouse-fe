@@ -4,7 +4,8 @@ import { Flex, Section } from "../../atoms/Flex";
 import congratsIcon from "../../../assets/svgs/congrats_icon.svg";
 import { Button } from "../../atoms/Button";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Receipt = styled.div`
   border: 1px solid #e4e4e4;
@@ -23,6 +24,26 @@ const CongratsIcon = styled.img`
 `;
 
 export const DDAASRequestSummary = () => {
+  const [searchParams] = useSearchParams();
+  const formValues = JSON.parse(searchParams.get("data"));
+
+  const submitData = async () => {
+    var formData = new FormData();
+    for (var key in formValues) {
+      formData.append(key, formValues[key]);
+    }
+
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbwOq8q4af6_dHkF896ztDL7xqjCwV63jPXTqv3bG8RwAI8Z1xXRDf-t7WUoV7cfJKpG/exec",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    if (response.status === 200) return toast.success("Request successful");
+    toast.error("Failed to submit form due to an error");
+  };
+
   return (
     <Receipt>
       <CongratsIcon src={congratsIcon} alt="success" />
@@ -56,16 +77,17 @@ export const DDAASRequestSummary = () => {
           </Text>
           <Text color="#62E000">300</Text>
         </ItemRow>
-        <Link to="/reference_code">
-          <Button
-            color="white"
-            text="Make payment"
-            borderColor="#62E000"
-            width="100%"
-            padding="16px 0"
-            margin="32px 0"
-          />
-        </Link>
+        {/* <Link to="/reference_code"> */}
+        <Button
+          onClick={submitData}
+          color="white"
+          text="Make payment"
+          borderColor="#62E000"
+          width="100%"
+          padding="16px 0"
+          margin="32px 0"
+        />
+        {/* </Link> */}
       </Section>
     </Receipt>
   );
