@@ -4,6 +4,7 @@ import checkMark from "../../../assets/svgs/check_mark.svg";
 import styled from "styled-components";
 import { Button } from "../../atoms/Button";
 import { Flex } from "../../atoms/Flex";
+import { Link } from "react-router-dom";
 
 const StyledIcon = styled.img`
   margin: 16px 0;
@@ -21,12 +22,14 @@ export const ReferenceCodeNotification = () => {
         You have a request confirmation email. Kindly click on the link therein
         to proceed with your request
       </Text>
-      <Button
-        text="Done"
-        borderColor="#62e000"
-        padding="18px 42px"
-        fontWeight="600"
-      />
+      <Link to="/">
+        <Button
+          text="Done"
+          borderColor="#62e000"
+          padding="18px 42px"
+          fontWeight="600"
+        />
+      </Link>
     </Flex>
   );
 };

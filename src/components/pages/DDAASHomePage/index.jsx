@@ -8,6 +8,7 @@ import { Flex, Section } from "../../atoms/Flex";
 import { Button } from "../../atoms/Button";
 import { Text } from "../../atoms/Text";
 import { NavBar } from "../../organisms";
+import { Link } from "react-router-dom";
 
 const Header = styled.section`
   background-image: url(${headerBg});
@@ -75,13 +76,14 @@ export const DDAASHomePage = () => {
             frequency of fraudulent transactions and misleading marketing baits
             in the real estate industry.
           </Text>
-
-          <Button
-            text="Get Started"
-            borderColor="#62e000"
-            padding="18px 42px"
-            fontWeight="600"
-          />
+          <Link to="/request_form">
+            <Button
+              text="Get Started"
+              borderColor="#62e000"
+              padding="18px 42px"
+              fontWeight="600"
+            />
+          </Link>
         </HeroSection>
       </Header>
 

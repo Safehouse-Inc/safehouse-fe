@@ -8,6 +8,8 @@ const styles = css`
   margin: ${({ margin }) => margin};
   text-align: ${({ textAlign }) => textAlign};
   width: ${({ width }) => width};
+  font-size: ${({ fontSize }) => fontSize};
+  font-style: ${({ fontStyle }) => fontStyle};
 `;
 
 const StyledH1 = styled.h1`

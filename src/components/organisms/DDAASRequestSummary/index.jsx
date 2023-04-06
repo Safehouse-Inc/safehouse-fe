@@ -4,6 +4,7 @@ import { Flex, Section } from "../../atoms/Flex";
 import congratsIcon from "../../../assets/svgs/congrats_icon.svg";
 import { Button } from "../../atoms/Button";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Receipt = styled.div`
   border: 1px solid #e4e4e4;
@@ -55,14 +56,16 @@ export const DDAASRequestSummary = () => {
           </Text>
           <Text color="#62E000">300</Text>
         </ItemRow>
-        <Button
-          color="white"
-          text="Make payment"
-          borderColor="#62E000"
-          width="100%"
-          padding="16px 0"
-          margin="32px 0"
-        />
+        <Link to="/reference_code">
+          <Button
+            color="white"
+            text="Make payment"
+            borderColor="#62E000"
+            width="100%"
+            padding="16px 0"
+            margin="32px 0"
+          />
+        </Link>
       </Section>
     </Receipt>
   );

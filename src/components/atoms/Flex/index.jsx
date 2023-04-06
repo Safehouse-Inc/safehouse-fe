@@ -14,11 +14,12 @@ export const Section = styled.div`
 `;
 
 export const Flex = styled.div`
+  background-color: ${(props) => props.bgColor};
   display: flex;
   justify-content: ${(props) => props.justifyContent};
   align-items: ${(props) => props.alignItems};
   flex-direction: ${(props) => props.direction};
   gap: ${(props) => props.gap};
-
-  ${styles}
+  width: ${({ width }) => width};
+  ${styles};
 `;

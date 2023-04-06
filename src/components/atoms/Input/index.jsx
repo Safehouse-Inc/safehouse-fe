@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Text } from "../Text";
+import { Flex } from "../Flex";
 
 const StyledInput = styled.input`
   padding: 18px;
@@ -18,5 +20,20 @@ const StyledInput = styled.input`
 `;
 
 export const Input = (props) => {
-  return <StyledInput {...props} />;
+  return (
+    <Flex direction="column" width="100%">
+      <StyledInput {...props} />
+
+      {props.touched && props.errors ? (
+        <Text
+          fontStyle="italic"
+          color="#ff0000"
+          fontSize="0.7rem"
+          margin="-8px 0 0 0"
+        >
+          {props.errors}
+        </Text>
+      ) : null}
+    </Flex>
+  );
 };
