@@ -131,12 +131,14 @@ export const DDAASHomePage = () => {
             Click on the get started button and fill the from to uptake the
             service
           </Text>
-          <Button
-            text="Get Started"
-            borderColor="#62e000"
-            padding="18px 42px"
-            fontWeight="600"
-          />
+          <Link to="/request_form">
+            <Button
+              text="Get Started"
+              borderColor="#62e000"
+              padding="18px 42px"
+              fontWeight="600"
+            />
+          </Link>
         </Section>
       </GetStartedSection>
 
@@ -169,7 +171,7 @@ export const DDAASHomePage = () => {
             and peace of mind.
           </Text>
           <Button
-            text="Read more"
+            text="Contact Us"
             borderColor="#ffffff"
             bgColor="#ffffff"
             padding="18px 42px"
