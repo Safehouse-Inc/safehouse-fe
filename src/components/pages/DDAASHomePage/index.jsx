@@ -47,9 +47,9 @@ const ServiceSection = styled(Flex)`
 `;
 
 const ServiceTextSection = styled(Flex)`
-  height: 60vh;
-  direction: column;
-  justifycontent: center;
+  min-height: 60vh;
+  flex-direction: column;
+  justify-content: center;
   padding: 50px;
 
   @media only screen and (${screen.sm}) {
@@ -60,7 +60,7 @@ const ServiceTextSection = styled(Flex)`
 
 const GetStartedSection = styled(Flex)`
   background-image: url(${getStartedImg});
-  background-size: contain;
+  background-size: cover;
   height: 50vh;
   align-items: center;
   padding: 100px;
@@ -68,7 +68,6 @@ const GetStartedSection = styled(Flex)`
 
   @media only screen and (${screen.sm}) {
     height: auto;
-    background-size: cover;
     align-items: flex-start;
     justify-content: flex-start;
   }
@@ -147,10 +146,10 @@ export const DDAASHomePage = () => {
             margin="0 0 32px 0"
             color="#575A65"
           >
-            An essential resource for a potential real estate investor. Our aim
-            is to execute the highest quality deals. DDaaS was borne out of the
-            frequency of fraudulent transactions and misleading marketing baits
-            in the real estate industry.
+            An essential resource for a potential real estate investor. <br />{" "}
+            Our aim is to execute the highest quality deals. DDaaS was borne out
+            of the frequency of fraudulent transactions and misleading marketing
+            baits in the real estate industry.
           </Text>
           <Link to="/request_form">
             <Button
