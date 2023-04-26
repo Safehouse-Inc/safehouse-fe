@@ -8,12 +8,17 @@ import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { useNavigate } from "react-router-dom";
+import { screen } from "../../../theme/theme-utils";
 
 const Receipt = styled.div`
   border: 1px solid #e4e4e4;
   width: 40%;
   padding: 24px 42px;
   border-radius: 10px;
+
+  @media only screen and (${screen.sm}) {
+    width: 100%;
+  }
 `;
 
 const ItemRow = styled(Flex)`

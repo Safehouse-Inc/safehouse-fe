@@ -10,10 +10,26 @@ import { Button } from "../../atoms/Button";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { screen } from "../../../theme/theme-utils";
 
 const Icons = styled.img`
   width: 40px;
   margin: 16px 0;
+`;
+const FormArea = styled(Flex)`
+  width: 100%;
+  gap: 16px;
+
+  @media only screen and (${screen.sm}) {
+    display: block;
+  }
+`;
+const FormSections = styled.section`
+  width: 50%;
+
+  @media only screen and (${screen.sm}) {
+    width: 100%;
+  }
 `;
 
 export const DDAASRequestForm = () => {
@@ -58,8 +74,8 @@ export const DDAASRequestForm = () => {
     <DDAASRequestTemplate title="Due Diligence Request Form">
       <Section>
         <form action="POST" onSubmit={formik.handleSubmit}>
-          <Flex width="100%" gap="16px">
-            <Section width="50%">
+          <FormArea>
+            <FormSections>
               <Icons src={homeIcon} alt="home icon" />
               <Text type="p" fontWeight="600" margin="0 0 16px 0">
                 1. Personal Info
@@ -109,8 +125,8 @@ export const DDAASRequestForm = () => {
                   errors={formik.errors["Phone Number"]}
                 />
               </Flex>
-            </Section>
-            <Section width="50%">
+            </FormSections>
+            <FormSections>
               <Icons src={profileIcon} alt="property details" />
               <Text type="p" fontWeight="600" margin="0 0 16px 0">
                 2. Property Details
@@ -157,8 +173,8 @@ export const DDAASRequestForm = () => {
                   errors={formik.errors["Survey Number"]}
                 />
               </Flex>
-            </Section>
-          </Flex>
+            </FormSections>
+          </FormArea>
           <Flex justifyContent="center" margin="24px 0">
             <Link to="/summary"></Link>
             <Button

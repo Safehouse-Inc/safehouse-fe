@@ -12,7 +12,6 @@ const Wrapper = styled.nav`
   align-items: center;
   padding: 20px;
 `;
-
 const NavItems = styled(Flex)`
   & span {
     margin-right: 24px;
@@ -24,11 +23,9 @@ const NavItems = styled(Flex)`
     cursor: pointer;
   }
 `;
-
 const StyledLogo = styled.img`
   width: 150px;
 `;
-
 const navItems = [
   // { name: "Home", link: "#", type: "text" },
   // { name: "How it works", link: "#", type: "text" },
@@ -46,8 +43,8 @@ export const NavBar = () => {
         {navItems.map((item, idx) => {
           if (item.type === "button")
             return (
-              <Link to={item.link}>
-                <Button key={idx} text={item.name} borderColor="#62e000" />
+              <Link key={idx} to={item.link}>
+                <Button text={item.name} borderColor="#62e000" />
               </Link>
             );
           return (

@@ -9,6 +9,7 @@ import { Button } from "../../atoms/Button";
 import { Text } from "../../atoms/Text";
 import { NavBar } from "../../organisms";
 import { Link } from "react-router-dom";
+import { screen } from "../../../theme/theme-utils";
 
 const Header = styled.section`
   background-image: url(${headerBg});
@@ -21,6 +22,10 @@ const HeroSection = styled(Flex)`
   align-items: center;
   flex-direction: column;
   padding: 80px 12px;
+
+  @media only screen and (${screen.sm}) {
+    padding: 40px 6px;
+  }
 `;
 
 const TheServiceImage = styled.div`
@@ -35,6 +40,22 @@ const ServiceSection = styled(Flex)`
   & div {
     width: 100%;
   }
+
+  @media only screen and (${screen.sm}) {
+    display: block;
+  }
+`;
+
+const ServiceTextSection = styled(Flex)`
+  height: 60vh;
+  direction: column;
+  justifycontent: center;
+  padding: 50px;
+
+  @media only screen and (${screen.sm}) {
+    height: auto;
+    display: block;
+  }
 `;
 
 const GetStartedSection = styled(Flex)`
@@ -43,15 +64,70 @@ const GetStartedSection = styled(Flex)`
   height: 50vh;
   align-items: center;
   padding: 100px;
+  background-repeat: no-repeat;
+
+  @media only screen and (${screen.sm}) {
+    height: auto;
+    background-size: cover;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+`;
+
+const GetStartedSectionHeading = styled(Text)`
+  width: 50%;
+  margin: 0 0 16px 0;
+  color: #ffffff;
+
+  @media only screen and (${screen.sm}) {
+    width: 100%;
+  }
 `;
 
 const FooterLogo = styled.img`
   width: 150px;
+  margin: 10px 0;
 `;
 
 const SocialIcons = styled(Flex)`
   & span:not(:last-child) {
     margin-right: 16px;
+  }
+
+  margin: 10px 0;
+`;
+
+const MoreInfoOuterSection = styled(Flex)`
+  background-color: #ffffff;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MoreInfoInnerSection = styled(Flex)`
+  flex-direction: column;
+  width: 80%;
+  height: 70%;
+  align-items: center;
+  justify-content: center;
+  background-color: #62e000;
+  border-radius: 16px;
+
+  @media only screen and (${screen.sm}) {
+    width: 95%;
+    padding: 10px;
+  }
+`;
+
+const FooterSection = styled(Flex)`
+  justify-content: space-between;
+  background-color: white;
+  padding: 30px;
+
+  @media only screen and (${screen.sm}) {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -66,7 +142,7 @@ export const DDAASHomePage = () => {
           </Text>
           <Text
             type="p"
-            width="50%"
+            width="70%"
             textAlign="center"
             margin="0 0 32px 0"
             color="#575A65"
@@ -88,12 +164,7 @@ export const DDAASHomePage = () => {
       </Header>
 
       <ServiceSection>
-        <Flex
-          height="60vh"
-          direction="column"
-          justifyContent="center"
-          padding="50px"
-        >
+        <ServiceTextSection>
           <Text type="h1" color="#62E000" margin="0 0 16px 0">
             The Service
           </Text>
@@ -118,15 +189,15 @@ export const DDAASHomePage = () => {
             land registry search, operational due diligence and other related
             matters depending on client request.
           </Text>
-        </Flex>
+        </ServiceTextSection>
         <TheServiceImage />
       </ServiceSection>
 
       <GetStartedSection>
         <Section>
-          <Text type="h1" width="50%" margin="0 0 16px 0" color="#ffffff">
+          <GetStartedSectionHeading type="h1">
             Let’s get you Started
-          </Text>
+          </GetStartedSectionHeading>
           <Text type="p" width="70%" margin="0 0 16px 0" color="#ffffff">
             Click on the get started button and fill the from to uptake the
             service
@@ -142,27 +213,14 @@ export const DDAASHomePage = () => {
         </Section>
       </GetStartedSection>
 
-      <Flex
-        bgColor="#ffffff"
-        height="50vh"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Flex
-          direction="column"
-          width="80%"
-          height="70%"
-          alignItems="center"
-          justifyContent="center"
-          bgColor="#62e000"
-          borderRadius="16px"
-        >
+      <MoreInfoOuterSection>
+        <MoreInfoInnerSection>
           <Text type="h1" margin="0 0 16px 0" color="#ffffff">
             Need more information
           </Text>
           <Text
             type="p"
-            width="40%"
+            width="60%"
             color="#ffffff"
             margin="0 0 16px 0"
             textAlign="center"
@@ -178,17 +236,17 @@ export const DDAASHomePage = () => {
             color="black"
             fontWeight="600"
           />
-        </Flex>
-      </Flex>
+        </MoreInfoInnerSection>
+      </MoreInfoOuterSection>
 
-      <Flex justifyContent="space-between" bgColor="white" padding="30px">
+      <FooterSection>
         <FooterLogo src={footerLogo} alt="footer logo" />
         <SocialIcons color="black">
           <Text>Instagram</Text>
           <Text>Youtube</Text>
           <Text>Facebook</Text>
         </SocialIcons>
-      </Flex>
+      </FooterSection>
     </>
   );
 };
